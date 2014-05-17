@@ -1,0 +1,25 @@
+﻿@model WebBlog.Models.Post
+
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Home.css" rel="stylesheet" />
+
+<div class="jumbotron">
+    <div class="post-title">@Html.DisplayFor(model => model.Titulo)</div>
+    <div class="postmeta">Postado em 13/05/2014 | por @Html.DisplayFor(model => model.Autor.Nome)</div>
+    <div class="entry">@Html.DisplayFor(model => model.Conteudo)</div>
+</div>
+<div class="jumbotron">
+    <div class="post-title">Comentarios</div>
+        @foreach (var item in Model.Comentarios) {
+            <div class="postmeta">
+                <div class="comment-author">
+                    <span class="fn">@Html.DisplayFor(modelitem => item.Autor)</span>
+                    <div class="commenta-meta">@Html.DisplayFor(modelitem => item.dataComentario)</div>
+                </div>
+            </div>
+            <div class="entry">@Html.DisplayFor(modelitem => item.comenatrio)</div>
+        }
+    </div>

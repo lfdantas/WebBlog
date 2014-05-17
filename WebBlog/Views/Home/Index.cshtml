@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WebBlog.Models.Post>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/Home.css" rel="stylesheet" />
+<div class="container">
+    @if (this.Model != null && this.Model.Count() > 0)
+    {
+        foreach (var item in this.Model)
+        {
+            <div class="jumbotron">
+                <div class="post-title">
+                    @Html.ActionLink(item.Titulo, "Post", new { PostId = item.PostId})</div>
+                <div class="postmeta">Postado em 13/05/2014 | por @Html.DisplayFor(modelItem => item.Autor.Nome)</div>
+                <div class="entry">@Html.DisplayFor(modelItem => item.Conteudo)</div>
+                <div class="postinfo"><a href="#">@item.Comentarios.Count() Comentarios</a></div>
+            </div>
+        }
+    }
+    else
+    {
+        <div>Não há posts cadastrados</div>
+    }
+</div>
